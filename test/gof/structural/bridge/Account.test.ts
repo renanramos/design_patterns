@@ -41,15 +41,15 @@ test("Não deve criar uma conta de usuário do tipo motorista com placa do veíc
 
 test("Deve validar a senha de uma conta de usuário do tipo passageiro", function () {
     const account = new Passenger("John Doe", "john.doe@gmail.com", "11111111111", "JOHN DOE", "1111 1111 1111 1111", "08/28", "123", "123456");
-    expect(account.passwordMathes("123456")).toBe(true);
+    expect(account.passwordMatches("123456")).toBe(true);
 });
 
 test("Deve validar a senha armazenada em texto plano de uma conta de usuário do tipo passageiro", function () {
     const account = new Passenger("John Doe", "john.doe@gmail.com", "11111111111", "JOHN DOE", "1111 1111 1111 1111", "08/28", "123", "123456", "plaintext");
-    expect(account.passwordMathes("123456")).toBe(true);
+    expect(account.passwordMatches("123456")).toBe(true);
 });
 
 test("Deve validar a senha armazenada em SHA1 de uma conta de usuário do tipo passageiro", function () {
     const account = new Passenger("John Doe", "john.doe@gmail.com", "11111111111", "JOHN DOE", "1111 1111 1111 1111", "08/28", "123", "123456", "sha1");
-    expect(account.passwordMathes("123456")).toBe(true);
+    expect(account.passwordMatches("123456")).toBe(true);
 });
