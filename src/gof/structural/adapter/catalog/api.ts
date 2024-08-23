@@ -1,14 +1,15 @@
 // import express from "express";
 import { ProductRepositoryMemory } from "./ProductRepository";
 import GetProducts from "./GetProduct";
-import { ExpressAdapter } from "./HttpServer";
+import { ExpressAdapter, HapiAdapter } from "./HttpServer";
 
 
     const productRepository = new ProductRepositoryMemory();
     const getProduct = new GetProducts(productRepository);
-    const httpServer = new ExpressAdapter();
-    
-    httpServer.register("get", "/products/:productId", async function (params: any, body: any) {
+    // const httpServer = new ExpressAdapter();
+    const httpServer = new HapiAdapter();
+
+    httpServer.register("get", "/products/:{productId}", async function (params: any, body: any) {
         const productId = parseInt(params.productId);
         const output = await getProduct.execute(productId);
         return output;
